@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
-@RestController // указываем спрингу где искать поинты (например класс findAll)
+@RestController // указываем спрингу где искать поинты (например класс helloWorld)
 @RequestMapping(path = "api/user1") // после "localhost:8080" все методы будут находиться по данному адресу
 public class UserController {
 
