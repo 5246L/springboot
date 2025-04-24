@@ -29,7 +29,7 @@ public class User {
         this.age = age;
     }
 
-    public Use { {r() {
+    public User() {
     }
 
     public Long getId() {
