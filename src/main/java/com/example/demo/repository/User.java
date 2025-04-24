@@ -21,23 +21,7 @@ public class User {
     private LocalDate birth;
     private Integer age;
 
-    public User(Long id, String name, String email, LocalDate birth, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.birth = birth;
-        this.age = age;
-    }
-
     public User() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -58,14 +42,6 @@ public class User {
 
     public LocalDate getBirth() {
         return birth;
-    }
-
-    public void setBirth(LocalDate birth) {
-        this.birth = birth;
-    }
-
-    public Integer getAge() {
-        return age;
     }
 
     public void setAge(Integer age) {
