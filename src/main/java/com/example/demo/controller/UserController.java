@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.repository.User;
 import com.example.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
 
 @RestController // указываем спрингу где искать поинты (например класс helloWorld)
@@ -18,9 +20,12 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final JdbcTemplate jdbcTemplate;
 
-    public UserController(UserService userService) {
+    // Внедрение JdbcTemplate через конструктор
+    public UserController(UserService userService, JdbcTemplate jdbcTemplate) {
         this.userService = userService;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @GetMapping // указание на то, что нужно вернуть конкретный метод
@@ -36,6 +41,11 @@ public class UserController {
     @DeleteMapping(path = "{id}")
     public void delete(@PathVariable(name = "id") Long id) {
         userService.delete(id);
+    }
+
+    @PostMapping("/reset")
+    public void resetTable() {
+        jdbcTemplate.execute("TRUNCATE TABLE user1 RESTART IDENTITY CASCADE");
     }
 
     @PutMapping(path = "{id}")
