@@ -37,14 +37,14 @@ public class UserController {
         return userService.create(user);
     }
 
-    @DeleteMapping(path = "{id}")
-    public void delete(@PathVariable(name = "id") Long id) {
-        userService.delete(id);
-    }
-
     @PostMapping("/reset")
     public void resetTable() {
         jdbcTemplate.execute("TRUNCATE TABLE user1 RESTART IDENTITY CASCADE");
+    }
+
+    @DeleteMapping(path = "{id}")
+    public void delete(@PathVariable(name = "id") Long id) {
+        userService.delete(id);
     }
 
     @PutMapping(path = "{id}")

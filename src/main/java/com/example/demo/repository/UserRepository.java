@@ -6,7 +6,6 @@ import java.util.Optional;
 
 // передаем класс с которым работаем и тип id
 public interface UserRepository extends JpaRepository<User, Long> {
-
     // 1 вариант на нативном sql
     @Query(value = "select * from user1  where email = :email", nativeQuery = true)
     // если названия (email) разные, то нужно использоваться аннотацию @Param(value = "email")
